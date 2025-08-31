@@ -1,0 +1,1415 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إكسبريس كلين - خدمات النظافة المتكاملة في مراكش</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #3a86ff;
+            --secondary: #8338ec;
+            --accent: #ff006e;
+            --dark: #14213d;
+            --light: #f8f9fa;
+            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 8px;
+            font-size: 26px;
+        }
+
+        .language-switcher {
+            margin-right: 20px;
+        }
+
+        .language-btn {
+            background: var(--light);
+            border: 2px solid var(--primary);
+            border-radius: 20px;
+            padding: 6px 15px;
+            font-weight: 600;
+            color: var(--primary);
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+        }
+
+        .language-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .language-btn i {
+            margin-left: 5px;
+        }
+
+        nav {
+            position: relative;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 0 12px;
+        }
+
+        nav ul li a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--gradient);
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+
+        .header-cta .btn {
+            margin-left: 12px;
+            padding: 10px 20px;
+            font-size: 14px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: var(--gradient);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 15px;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--gradient);
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 130px 0 80px;
+            background: url('https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1800&q=80') no-repeat center center/cover;
+            position: relative;
+            color: white;
+            text-align: center;
+        }
+
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(58, 134, 255, 0.8), rgba(131, 56, 236, 0.8));
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-title p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: #666;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 30px 25px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 28px;
+            color: white;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            color: var(--dark);
+        }
+
+        .feature-card p {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .service-card:hover .service-img img {
+            transform: scale(1.1);
+        }
+
+        .service-content {
+            padding: 25px;
+        }
+
+        .service-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+            color: var(--dark);
+        }
+
+        .service-content p {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        .service-price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .testimonial-card {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+
+        .testimonial-text {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #555;
+            margin-bottom: 15px;
+            position: relative;
+            padding: 0 15px;
+        }
+
+        .testimonial-text:before {
+            content: """;
+            font-size: 4rem;
+            color: var(--primary);
+            opacity: 0.2;
+            position: absolute;
+            top: -25px;
+            left: -5px;
+            font-family: sans-serif;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 12px;
+        }
+
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+
+        .author-info p {
+            color: #777;
+            font-size: 0.85rem;
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 80px 0;
+            background: var(--gradient);
+            color: white;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+        }
+
+        .cta p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+
+        .cta .btn {
+            background: white;
+            color: var(--primary);
+            font-size: 1rem;
+            padding: 14px 35px;
+        }
+
+        .cta .btn:hover {
+            background: var(--light);
+            transform: translateY(-3px);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+
+        .contact-info {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+
+        .contact-info h3 {
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .contact-icon {
+            width: 45px;
+            height: 45px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: white;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .contact-text {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .contact-text strong {
+            color: var(--dark);
+        }
+
+        .contact-form {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+
+        .contact-form h3 {
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 0 25px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 12px;
+        }
+
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--gradient);
+        }
+
+        .footer-column p {
+            margin-bottom: 15px;
+            opacity: 0.8;
+            line-height: 1.7;
+            font-size: 0.9rem;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .footer-column ul li a:hover {
+            opacity: 1;
+            padding-right: 8px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 16px;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--gradient);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 50px;
+                right: 0;
+                background: white;
+                width: 250px;
+                border-radius: 10px;
+                box-shadow: var(--shadow);
+                flex-direction: column;
+                padding: 20px;
+            }
+            
+            nav ul.active {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 110px 0 60px;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title p {
+                font-size: 1rem;
+            }
+            
+            .feature-card, .service-card, .testimonial-card {
+                padding: 20px;
+            }
+            
+            .contact-info, .contact-form {
+                padding: 25px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .footer-column h3:after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+            
+            .logo-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .language-switcher {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .logo {
+                font-size: 18px;
+            }
+            
+            .logo i {
+                font-size: 22px;
+            }
+            
+            .header-cta {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+            
+            .features-grid, .services-grid, .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-detail {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .contact-icon {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+            
+            .language-btn {
+                padding: 4px 10px;
+                font-size: 14px;
+            }
+        }
+
+        @media (min-width: 993px) {
+            .contact-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        /* Language Specific Styles */
+        [lang="fr"] body,
+        [lang="en"] body {
+            direction: ltr;
+        }
+
+        [lang="fr"] .section-title::after,
+        [lang="en"] .section-title::after {
+            margin: 15px 0;
+        }
+
+        [lang="fr"] .footer-column ul li a:hover,
+        [lang="en"] .footer-column ul li a:hover {
+            padding-right: 0;
+            padding-left: 8px;
+        }
+
+        [lang="ar"] {
+            direction: rtl;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo-container">
+                <div class="language-switcher">
+                    <button class="language-btn" id="languageSwitcher">
+                        <i class="fas fa-globe"></i> العربية
+                    </button>
+                </div>
+                <div class="logo">
+                    <i class="fas fa-spa"></i>
+                    إكسبريس كلين
+                </div>
+            </div>
+            
+            <nav>
+                <ul>
+                    <li><a href="#home" data-lang="ar">الرئيسية</a><a href="#home" data-lang="fr" style="display: none;">Accueil</a><a href="#home" data-lang="en" style="display: none;">Home</a></li>
+                    <li><a href="#services" data-lang="ar">خدماتنا</a><a href="#services" data-lang="fr" style="display: none;">Services</a><a href="#services" data-lang="en" style="display: none;">Services</a></li>
+                    <li><a href="#about" data-lang="ar">من نحن</a><a href="#about" data-lang="fr" style="display: none;">À propos</a><a href="#about" data-lang="en" style="display: none;">About</a></li>
+                    <li><a href="#contact" data-lang="ar">اتصل بنا</a><a href="#contact" data-lang="fr" style="display: none;">Contact</a><a href="#contact" data-lang="en" style="display: none;">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-cta">
+                <a href="#contact" class="btn" data-lang="ar">اطلب خدمة</a>
+                <a href="#contact" class="btn" data-lang="fr" style="display: none;">Demander</a>
+                <a href="#contact" class="btn" data-lang="en" style="display: none;">Request</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h1 data-lang="ar">جودة الحياة تبدأ بمنزل نظيف وحديقة جميلة</h1>
+            <h1 data-lang="fr" style="display: none;">La qualité de vie commence par une maison propre et un beau jardin</h1>
+            <h1 data-lang="en" style="display: none;">Quality of life begins with a clean house and a beautiful garden</h1>
+            
+            <p data-lang="ar">نقدم خدمات تنظيف وتنسيق حدائق محترفة في مراكش والنواحي بأسعار تنافسية وجودة لا مثيل لها</p>
+            <p data-lang="fr" style="display: none;">Nous proposons des services professionnels de nettoyage et d'aménagement paysager à Marrakech et ses environs à des prix compétitifs et une qualité incomparable.</p>
+            <p data-lang="en" style="display: none;">We provide professional cleaning and landscaping services in Marrakech and surrounding areas at competitive prices and unparalleled quality.</p>
+            
+            <a href="#contact" class="btn" data-lang="ar">اطلب خدمتك الآن <i class="fas fa-arrow-left"></i></a>
+            <a href="#contact" class="btn" data-lang="fr" style="display: none;">Demandez maintenant <i class="fas fa-arrow-right"></i></a>
+            <a href="#contact" class="btn" data-lang="en" style="display: none;">Request Now <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-lang="ar">لماذا تختار خدماتنا؟</h2>
+                <h2 data-lang="fr" style="display: none;">Pourquoi choisir nos services?</h2>
+                <h2 data-lang="en" style="display: none;">Why choose our services?</h2>
+                
+                <p data-lang="ar">نحن نقدم حلولاً متكاملة لتحويل منزلك إلى جنة نظيفة وهادئة</p>
+                <p data-lang="fr" style="display: none;">Nous proposons des solutions complètes pour transformer votre maison en un paradis propre et paisible.</p>
+                <p data-lang="en" style="display: none;">We offer complete solutions to turn your home into a clean and peaceful paradise.</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 data-lang="ar">توقيت مرن</h3>
+                    <h3 data-lang="fr" style="display: none;">Horaires flexibles</h3>
+                    <h3 data-lang="en" style="display: none;">Flexible Timing</h3>
+                    
+                    <p data-lang="ar">نعمل وفقًا لجدولك الزمني، حتى في عطلات نهاية الأسبوع والمساء</p>
+                    <p data-lang="fr" style="display: none;">Nous travaillons selon votre emploi du temps, même les week-ends et le soir.</p>
+                    <p data-lang="en" style="display: none;">We work according to your schedule, even on weekends and evenings.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 data-lang="ar">ضمان الجودة</h3>
+                    <h3 data-lang="fr" style="display: none;">Garantie de qualité</h3>
+                    <h3 data-lang="en" style="display: none;">Quality Guarantee</h3>
+                    
+                    <p data-lang="ar">جميع خدماتنا مضمونة بنسبة 100٪، إذا لم تكن راضيًا، سنعيد الخدمة مجانًا</p>
+                    <p data-lang="fr" style="display: none;">Tous nos services sont garantis à 100%, si vous n'êtes pas satisfait, nous refaisons le service gratuitement.</p>
+                    <p data-lang="en" style="display: none;">All our services are 100% guaranteed, if you're not satisfied, we'll redo the service for free.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-tag"></i>
+                    </div>
+                    <h3 data-lang="ar">أسعار تنافسية</h3>
+                    <h3 data-lang="fr" style="display: none;">Prix compétitifs</h3>
+                    <h3 data-lang="en" style="display: none;">Competitive Prices</h3>
+                    
+                    <p data-lang="ar">نقدم أفضل الخدمات بأقل الأسعار مع خصومات للعملاء الدائمين</p>
+                    <p data-lang="fr" style="display: none;">Nous offrons les meilleurs services aux prix les plus bas avec des remises pour les clients réguliers.</p>
+                    <p data-lang="en" style="display: none;">We offer the best services at the lowest prices with discounts for regular customers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-lang="ar">خدماتنا المتكاملة</h2>
+                <h2 data-lang="fr" style="display: none;">Nos services complets</h2>
+                <h2 data-lang="en" style="display: none;">Our Complete Services</h2>
+                
+                <p data-lang="ar">اكتشف مجموعة خدماتنا الشاملة المصممة خصيصًا لتحقيق أقصى درجات الراحة والنظافة لمنزلك</p>
+                <p data-lang="fr" style="display: none;">Découvrez notre gamme de services complets conçus spécialement pour un maximum de confort et de propreté pour votre maison.</p>
+                <p data-lang="en" style="display: none;">Discover our range of complete services specially designed for maximum comfort and cleanliness for your home.</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="تنظيف المنازل">
+                    </div>
+                    <div class="service-content">
+                        <h3 data-lang="ar">تنظيف المنازل الشامل</h3>
+                        <h3 data-lang="fr" style="display: none;">Nettoyage complet de la maison</h3>
+                        <h3 data-lang="en" style="display: none;">Complete House Cleaning</h3>
+                        
+                        <p data-lang="ar">خدمة تنظيف متكاملة تشمل جميع أركان المنزل باستخدام تقنيات التنظيف الحديثة والصديقة للبيئة</p>
+                        <p data-lang="fr" style="display: none;">Service de nettoyage complet comprenant tous les coins de la maison utilisant des techniques de nettoyage modernes et écologiques.</p>
+                        <p data-lang="en" style="display: none;">Complete cleaning service including all corners of the house using modern and eco-friendly cleaning techniques.</p>
+                        
+                        <div class="service-price" data-lang="ar">ابتداءً من 200 درهم</div>
+                        <div class="service-price" data-lang="fr" style="display: none;">À partir de 200 DH</div>
+                        <div class="service-price" data-lang="en" style="display: none;">Starting from 200 MAD</div>
+                        
+                        <a href="#contact" class="btn btn-outline" data-lang="ar">اطلب الخدمة</a>
+                        <a href="#contact" class="btn btn-outline" data-lang="fr" style="display: none;">Demander</a>
+                        <a href="#contact" class="btn btn-outline" data-lang="en" style="display: none;">Request</a>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="تنسيق الحدائق">
+                    </div>
+                    <div class="service-content">
+                        <h3 data-lang="ar">تنسيق الحدائق</h3>
+                        <h3 data-lang="fr" style="display: none;">Aménagement paysager</h3>
+                        <h3 data-lang="en" style="display: none;">Landscaping</h3>
+                        
+                        <p data-lang="ar">تصميم وتنفيذ وتنسيق الحدائق مع اختيار النباتات المناسبة للمناخ المحلي في مراكش</p>
+                        <p data-lang="fr" style="display: none;">Conception, mise en œuvre et aménagement de jardins avec sélection de plantes adaptées au climat local de Marrakech.</p>
+                        <p data-lang="en" style="display: none;">Design, implementation and landscaping with selection of plants suitable for the local climate in Marrakech.</p>
+                        
+                        <div class="service-price" data-lang="ar">ابتداءً من 350 درهم</div>
+                        <div class="service-price" data-lang="fr" style="display: none;">À partir de 350 DH</div>
+                        <div class="service-price" data-lang="en" style="display: none;">Starting from 350 MAD</div>
+                        
+                        <a href="#contact" class="btn btn-outline" data-lang="ar">اطلب الخدمة</a>
+                        <a href="#contact" class="btn btn-outline" data-lang="fr" style="display: none;">Demander</a>
+                        <a href="#contact" class="btn btn-outline" data-lang="en" style="display: none;">Request</a>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="تنظيف أحواض السباحة">
+                    </div>
+                    <div class="service-content">
+                        <h3 data-lang="ar">تنظيف أحواض السباحة</h3>
+                        <h3 data-lang="fr" style="display: none;">Nettoyage de piscines</h3>
+                        <h3 data-lang="en" style="display: none;">Pool Cleaning</h3>
+                        
+                        <p data-lang="ar">خدمة متكاملة لتنظيف وتعقيم أحواض السباحة مع صيانة دورية للحفاظ على نقاء المياه</p>
+                        <p data-lang="fr" style="display: none;">Service complet de nettoyage et désinfection des piscines avec entretien régulier pour maintenir la pureté de l'eau.</p>
+                        <p data-lang="en" style="display: none;">Complete cleaning and disinfection service for pools with regular maintenance to maintain water purity.</p>
+                        
+                        <div class="service-price" data-lang="ar">ابتداءً من 300 درهم</div>
+                        <div class="service-price" data-lang="fr" style="display: none;">À partir de 300 DH</div>
+                        <div class="service-price" data-lang="en" style="display: none;">Starting from 300 MAD</div>
+                        
+                        <a href="#contact" class="btn btn-outline" data-lang="ar">اطلب الخدمة</a>
+                        <a href="#contact" class="btn btn-outline" data-lang="fr" style="display: none;">Demander</a>
+                        <a href="#contact" class="btn btn-outline" data-lang="en" style="display: none;">Request</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-lang="ar">آراء عملائنا</h2>
+                <h2 data-lang="fr" style="display: none;">Avis de nos clients</h2>
+                <h2 data-lang="en" style="display: none;">Customer Reviews</h2>
+                
+                <p data-lang="ar">انظر ماذا يقول عملاؤنا السعداء عن جودة خدماتنا</p>
+                <p data-lang="fr" style="display: none;">Voyez ce que nos clients satisfaits disent de la qualité de nos services.</p>
+                <p data-lang="en" style="display: none;">See what our satisfied customers say about the quality of our services.</p>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text" data-lang="ar">
+                        "لقد استخدمت خدمات تنظيف المنازل وكان الفريق محترفًا جدًا. المنزل أصبح يلمع ولم أتخيل أنه يمكن أن يكون بهذا النظافة!"
+                    </div>
+                    <div class="testimonial-text" data-lang="fr" style="display: none;">
+                        "J'ai utilisé les services de nettoyage de maison et l'équipe était très professionnelle. La maison brille et je n'aurais jamais imaginé qu'elle pourrait être aussi propre !"
+                    </div>
+                    <div class="testimonial-text" data-lang="en" style="display: none;">
+                        "I used the house cleaning services and the team was very professional. The house shines and I never imagined it could be this clean!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="سارة">
+                        </div>
+                        <div class="author-info">
+                            <h4 data-lang="ar">سارة أحمد</h4>
+                            <h4 data-lang="fr" style="display: none;">Sarah Ahmed</h4>
+                            <h4 data-lang="en" style="display: none;">Sarah Ahmed</h4>
+                            
+                            <p data-lang="ar">عميلة سعيدة</p>
+                            <p data-lang="fr" style="display: none;">Cliente satisfaite</p>
+                            <p data-lang="en" style="display: none;">Satisfied customer</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-text" data-lang="ar">
+                        "حديقتي كانت في حالة مزرية قبل أن يتولى فريق إكسبريس كلين مهمة تنسيقها. الآن أصبحت مكاني المفضل للاسترخاء!"
+                    </div>
+                    <div class="testimonial-text" data-lang="fr" style="display: none;">
+                        "Mon jardin était dans un état pitoyable avant que l'équipe d'Express Clean ne prenne en charge son aménagement. Maintenant, c'est mon endroit préféré pour me détendre !"
+                    </div>
+                    <div class="testimonial-text" data-lang="en" style="display: none;">
+                        "My garden was in a pitiful state before the Express Clean team took over its landscaping. Now it's my favorite place to relax!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="محمد">
+                        </div>
+                        <div class="author-info">
+                            <h4 data-lang="ar">محمد الخالد</h4>
+                            <h4 data-lang="fr" style="display: none;">Mohamed Al Khalid</h4>
+                            <h4 data-lang="en" style="display: none;">Mohamed Al Khalid</h4>
+                            
+                            <p data-lang="ar">عميل سعيد</p>
+                            <p data-lang="fr" style="display: none;">Client satisfait</p>
+                            <p data-lang="en" style="display: none;">Satisfied customer</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-text" data-lang="ar">
+                        "خدمة تنظيف أحواض السباحة كانت ممتازة. المياه أصبحت صافية تمامًا والأسعار معقولة جدًا مقارنة بالجودة المقدمة."
+                    </div>
+                    <div class="testimonial-text" data-lang="fr" style="display: none;">
+                        "Le service de nettoyage de piscine était excellent. L'eau est devenue parfaitement claire et les prix sont très raisonnables compte tenu de la qualité offered."
+                    </div>
+                    <div class="testimonial-text" data-lang="en" style="display: none;">
+                        "The pool cleaning service was excellent. The water became perfectly clear and the prices are very reasonable given the quality provided."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="فاطمة">
+                        </div>
+                        <div class="author-info">
+                            <h4 data-lang="ar">فاطمة الزهراء</h4>
+                            <h4 data-lang="fr" style="display: none;">Fatima Zahra</h4>
+                            <h4 data-lang="en" style="display: none;">Fatima Zahra</h4>
+                            
+                            <p data-lang="ar">عميلة سعيدة</p>
+                            <p data-lang="fr" style="display: none;">Cliente satisfaite</p>
+                            <p data-lang="en" style="display: none;">Satisfied customer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2 data-lang="ar">احصل على خصم 20% على أول طلب</h2>
+            <h2 data-lang="fr" style="display: none;">Obtenez 20% de réduction sur votre première commande</h2>
+            <h2 data-lang="en" style="display: none;">Get 20% off your first order</h2>
+            
+            <p data-lang="ar">انسَ هموم النظافة ودع المحترفين يتولون المهمة. استخدم كود الخصم: CLEAN20</p>
+            <p data-lang="fr" style="display: none;">Oubliez les soucis de nettoyage et laissez les professionnels s'en occuper. Utilisez le code promo : CLEAN20</p>
+            <p data-lang="en" style="display: none;">Forget cleaning worries and let the professionals handle it. Use promo code: CLEAN20</p>
+            
+            <a href="#contact" class="btn" data-lang="ar">احصل على الخصم الآن</a>
+            <a href="#contact" class="btn" data-lang="fr" style="display: none;">Obtenez la réduction</a>
+            <a href="#contact" class="btn" data-lang="en" style="display: none;">Get Discount</a>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-lang="ar">اتصل بنا</h2>
+                <h2 data-lang="fr" style="display: none;">Contactez-nous</h2>
+                <h2 data-lang="en" style="display: none;">Contact Us</h2>
+                
+                <p data-lang="ar">نحن هنا لمساعدتك! تواصل معنا اليوم للحصول على استشارة مجانية</p>
+                <p data-lang="fr" style="display: none;">Nous sommes là pour vous aider! Contactez-nous aujourd'hui pour une consultation gratuite.</p>
+                <p data-lang="en" style="display: none;">We are here to help! Contact us today for a free consultation.</p>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3 data-lang="ar">معلومات التواصل</h3>
+                    <h3 data-lang="fr" style="display: none;">Informations de contact</h3>
+                    <h3 data-lang="en" style="display: none;">Contact Information</h3>
+                    
+                    <div class="contact-detail">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-text">
+                            <strong data-lang="ar">هاتف:</strong>
+                            <strong data-lang="fr" style="display: none;">Téléphone:</strong>
+                            <strong data-lang="en" style="display: none;">Phone:</strong>
+                            <span> 0663531691</span>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-detail">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-text">
+                            <strong data-lang="ar">البريد الإلكتروني:</strong>
+                            <strong data-lang="fr" style="display: none;">Email:</strong>
+                            <strong data-lang="en" style="display: none;">Email:</strong>
+                            <span> emailconsulting3600@gmail.com</span>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-detail">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <strong data-lang="ar">منطقة الخدمة:</strong>
+                            <strong data-lang="fr" style="display: none;">Zone de service:</strong>
+                            <strong data-lang="en" style="display: none;">Service Area:</strong>
+                            <span data-lang="ar"> مراكش والنواحي</span>
+                            <span data-lang="fr" style="display: none;"> Marrakech et environs</span>
+                            <span data-lang="en" style="display: none;"> Marrakech and surrounding areas</span>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-detail">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-text">
+                            <strong data-lang="ar">أوقات العمل:</strong>
+                            <strong data-lang="fr" style="display: none;">Heures d'ouverture:</strong>
+                            <strong data-lang="en" style="display: none;">Working Hours:</strong>
+                            <span data-lang="ar"> كل أيام الأسبوع من 8 صباحًا إلى 8 مساءً</span>
+                            <span data-lang="fr" style="display: none;"> Tous les jours de 8h à 20h</span>
+                            <span data-lang="en" style="display: none;"> Every day from 8am to 8pm</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3 data-lang="ar">اطلب خدمتك</h3>
+                    <h3 data-lang="fr" style="display: none;">Demandez votre service</h3>
+                    <h3 data-lang="en" style="display: none;">Request Your Service</h3>
+                    
+                    <form id="serviceRequestForm">
+                        <div class="form-group">
+                            <label for="name" data-lang="ar">الاسم الكامل</label>
+                            <label for="name" data-lang="fr" style="display: none;">Nom complet</label>
+                            <label for="name" data-lang="en" style="display: none;">Full Name</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone" data-lang="ar">رقم الهاتف</label>
+                            <label for="phone" data-lang="fr" style="display: none;">Numéro de téléphone</label>
+                            <label for="phone" data-lang="en" style="display: none;">Phone Number</label>
+                            <input type="tel" id="phone" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="service" data-lang="ar">نوع الخدمة</label>
+                            <label for="service" data-lang="fr" style="display: none;">Type de service</label>
+                            <label for="service" data-lang="en" style="display: none;">Service Type</label>
+                            <select id="service" required>
+                                <option value="" data-lang="ar">اختر الخدمة</option>
+                                <option value="" data-lang="fr" style="display: none;">Choisissez un service</option>
+                                <option value="" data-lang="en" style="display: none;">Choose a service</option>
+                                
+                                <option value="تنظيف المنازل" data-lang="ar">تنظيف المنازل</option>
+                                <option value="تنظيف المنازل" data-lang="fr" style="display: none;">Nettoyage de maison</option>
+                                <option value="تنظيف المنازل" data-lang="en" style="display: none;">House Cleaning</option>
+                                
+                                <option value="تنسيق الحدائق" data-lang="ar">تنسيق الحدائق</option>
+                                <option value="تنسيق الحدائق" data-lang="fr" style="display: none;">Aménagement paysager</option>
+                                <option value="تنسيق الحدائق" data-lang="en" style="display: none;">Landscaping</option>
+                                
+                                <option value="تنظيف أحواض السباحة" data-lang="ar">تنظيف أحواض السباحة</option>
+                                <option value="تنظيف أحواض السباحة" data-lang="fr" style="display: none;">Nettoyage de piscine</option>
+                                <option value="تنظيف أحواض السباحة" data-lang="en" style="display: none;">Pool Cleaning</option>
+                            </select>
+                        </div>
+                        
+                        <button type="submit" class="btn" data-lang="ar">إرسال الطلب</button>
+                        <button type="submit" class="btn" data-lang="fr" style="display: none;">Envoyer la demande</button>
+                        <button type="submit" class="btn" data-lang="en" style="display: none;">Send Request</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3 data-lang="ar">إكسبريس كلين</h3>
+                    <h3 data-lang="fr" style="display: none;">Express Clean</h3>
+                    <h3 data-lang="en" style="display: none;">Express Clean</h3>
+                    
+                    <p data-lang="ar">نقدم خدمات تنظيف وتنسيق حدائق محترفة في مراكش والنواحي. جودة لا Compromise عليها وأسعار تنافسية.</p>
+                    <p data-lang="fr" style="display: none;">Nous proposons des services professionnels de nettoyage et d'aménagement paysager à Marrakech et ses environs. Qualité sans compromis et prix compétitifs.</p>
+                    <p data-lang="en" style="display: none;">We provide professional cleaning and landscaping services in Marrakech and surrounding areas. Uncompromising quality and competitive prices.</p>
+                    
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3 data-lang="ar">خدماتنا</h3>
+                    <h3 data-lang="fr" style="display: none;">Nos services</h3>
+                    <h3 data-lang="en" style="display: none;">Our Services</h3>
+                    
+                    <ul>
+                        <li><a href="#" data-lang="ar">تنظيف المنازل</a><a href="#" data-lang="fr" style="display: none;">Nettoyage de maison</a><a href="#" data-lang="en" style="display: none;">House Cleaning</a></li>
+                        <li><a href="#" data-lang="ar">تنسيق الحدائق</a><a href="#" data-lang="fr" style="display: none;">Aménagement paysager</a><a href="#" data-lang="en" style="display: none;">Landscaping</a></li>
+                        <li><a href="#" data-lang="ar">تنظيف أحواض السباحة</a><a href="#" data-lang="fr" style="display: none;">Nettoyage de piscine</a><a href="#" data-lang="en" style="display: none;">Pool Cleaning</a></li>
+                        <li><a href="#" data-lang="ar">تنظيف الأرضيات الرخامية</a><a href="#" data-lang="fr" style="display: none;">Nettoyage de sols en marbre</a><a href="#" data-lang="en" style="display: none;">Marble Floor Cleaning</a></li>
+                        <li><a href="#" data-lang="ar">تنظيف الزجاج</a><a href="#" data-lang="fr" style="display: none;">Nettoyage de vitres</a><a href="#" data-lang="en" style="display: none;">Glass Cleaning</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3 data-lang="ar">روابط سريعة</h3>
+                    <h3 data-lang="fr" style="display: none;">Liens rapides</h3>
+                    <h3 data-lang="en" style="display: none;">Quick Links</h3>
+                    
+                    <ul>
+                        <li><a href="#home" data-lang="ar">الرئيسية</a><a href="#home" data-lang="fr" style="display: none;">Accueil</a><a href="#home" data-lang="en" style="display: none;">Home</a></li>
+                        <li><a href="#services" data-lang="ar">خدماتنا</a><a href="#services" data-lang="fr" style="display: none;">Services</a><a href="#services" data-lang="en" style="display: none;">Services</a></li>
+                        <li><a href="#about" data-lang="ar">من نحن</a><a href="#about" data-lang="fr" style="display: none;">À propos</a><a href="#about" data-lang="en" style="display: none;">About</a></li>
+                        <li><a href="#contact" data-lang="ar">اتصل بنا</a><a href="#contact" data-lang="fr" style="display: none;">Contact</a><a href="#contact" data-lang="en" style="display: none;">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3 data-lang="ar">ساعات العمل</h3>
+                    <h3 data-lang="fr" style="display: none;">Heures d'ouverture</h3>
+                    <h3 data-lang="en" style="display: none;">Working Hours</h3>
+                    
+                    <ul>
+                        <li data-lang="ar">الإثنين - الجمعة: 8 ص - 8 م</li>
+                        <li data-lang="fr" style="display: none;">Lundi - Vendredi: 8h - 20h</li>
+                        <li data-lang="en" style="display: none;">Monday - Friday: 8am - 8pm</li>
+                        
+                        <li data-lang="ar">السبت: 9 ص - 6 م</li>
+                        <li data-lang="fr" style="display: none;">Samedi: 9h - 18h</li>
+                        <li data-lang="en" style="display: none;">Saturday: 9am - 6pm</li>
+                        
+                        <li data-lang="ar">الأحد: مغلق</li>
+                        <li data-lang="fr" style="display: none;">Dimanche: Fermé</li>
+                        <li data-lang="en" style="display: none;">Sunday: Closed</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p data-lang="ar">&copy; 2026 إكسبريس كلين. جميع الحقوق محفوظة.</p>
+                <p data-lang="fr" style="display: none;">&copy; 2026 Express Clean. Tous droits réservés.</p>
+                <p data-lang="en" style="display: none;">&copy; 2026 Express Clean. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Language Switcher
+        const languageBtn = document.getElementById('languageSwitcher');
+        let currentLang = 'ar';
+        
+        languageBtn.addEventListener('click', function() {
+            if (currentLang === 'ar') {
+                currentLang = 'fr';
+                languageBtn.innerHTML = '<i class="fas fa-globe"></i> Français';
+            } else if (currentLang === 'fr') {
+                currentLang = 'en';
+                languageBtn.innerHTML = '<i class="fas fa-globe"></i> English';
+            } else {
+                currentLang = 'ar';
+                languageBtn.innerHTML = '<i class="fas fa-globe"></i> العربية';
+            }
+            
+            changeLanguage(currentLang);
+        });
+        
+        function changeLanguage(lang) {
+            // Update html lang and dir attributes
+            document.documentElement.lang = lang;
+            
+            if (lang === 'ar') {
+                document.dir = 'rtl';
+                document.querySelector('body').style.textAlign = 'right';
+            } else {
+                document.dir = 'ltr';
+                document.querySelector('body').style.textAlign = 'left';
+            }
+            
+            // Show/hide elements based on language
+            document.querySelectorAll('[data-lang]').forEach(element => {
+                if (element.getAttribute('data-lang') === lang) {
+                    element.style.display = element.tagName === 'OPTION' ? '' : 'block';
+                } else {
+                    element.style.display = 'none';
+                }
+            });
+            
+            // Special handling for options in select elements
+            document.querySelectorAll('select option').forEach(option => {
+                if (option.getAttribute('data-lang') === lang) {
+                    option.style.display = '';
+                } else if (!option.hasAttribute('data-lang')) {
+                    option.style.display = '';
+                } else {
+                    option.style.display = 'none';
+                }
+            });
+        }
+        
+        // Form Submission
+        const form = document.getElementById('serviceRequestForm');
+        
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const service = document.getElementById('service').value;
+            
+            // Here you would typically send the form data to your server
+            // For demonstration, we'll just show an alert
+            let message = '';
+            if (currentLang === 'ar') {
+                message = `شكراً ${name} على طلبك! سنتصل بك على الرقم ${phone} قريباً لتأكيد خدمة ${service}.`;
+            } else if (currentLang === 'fr') {
+                message = `Merci ${name} pour votre demande! Nous vous contacterons au ${phone} bientôt pour confirmer le service ${service}.`;
+            } else {
+                message = `Thank you ${name} for your request! We will contact you at ${phone} soon to confirm the ${service} service.`;
+            }
+            
+            alert(message);
+            
+            // Reset form
+            form.reset();
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Sticky header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.1)';
+            }
+        });
+    </script>
+</body>
+</html>
