@@ -529,7 +529,8 @@
         }
 
         .form-group input,
-        .form-group select {
+        .form-group select,
+        .form-group textarea {
             width: 100%;
             padding: 14px 18px;
             border: 2px solid #e9ecef;
@@ -539,7 +540,8 @@
         }
 
         .form-group input:focus,
-        .form-group select:focus {
+        .form-group select:focus,
+        .form-group textarea:focus {
             border-color: var(--primary);
             outline: none;
         }
@@ -635,6 +637,27 @@
             font-size: 0.9rem;
         }
 
+        /* Notification */
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            border-radius: 8px;
+            background: var(--primary);
+            color: white;
+            box-shadow: var(--shadow);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.4s ease;
+            z-index: 10000;
+        }
+
+        .notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
         /* Responsive Styles */
         @media (max-width: 992px) {
             .hero h1 {
@@ -647,27 +670,6 @@
             
             nav ul {
                 display: none;
-                position: absolute;
-                top: 50px;
-                right: 0;
-                background: white;
-                width: 250px;
-                border-radius: 10px;
-                box-shadow: var(--shadow);
-                flex-direction: column;
-                padding: 20px;
-            }
-            
-            nav ul.active {
-                display: flex;
-            }
-            
-            nav ul li {
-                margin: 10px 0;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
             }
         }
 
@@ -940,7 +942,7 @@
                 
                 <div class="service-card">
                     <div class="service-img">
-                        <img src= "https://res.cloudinary.com/dqvqlh0yv/image/upload/v1756654704/323885387_688418189592888_2582670432024049100_n-1024x768_f6nuuw.jpg" alt="تنسيق الحدائق">
+                        <img src="https://res.cloudinary.com/dqvqlh0yv/image/upload/v1756653209/travaux-de-jardinage-au-printemps-jardin_roebgg.jpg" alt="تنسيق الحدائق">
                     </div>
                     <div class="service-content">
                         <h3 data-lang="ar">تنسيق الحدائق</h3>
@@ -1058,7 +1060,7 @@
                         "خدمة تنظيف أحواض السباحة كانت ممتازة. المياه أصبحت صافية تمامًا والأسعار معقولة جدًا مقارنة بالجودة المقدمة."
                     </div>
                     <div class="testimonial-text" data-lang="fr" style="display: none;">
-                        "Le service de nettoyage de piscine était excellent. L'eau est devenue parfaitement claire et les prix sont très raisonnables compte tenu de la qualité offered."
+                        "Le service de nettoyage de piscine était excellent. L'eau est devenue parfaitement claire et les prix sont très raisonnables compte tenu de la qualité offerte."
                     </div>
                     <div class="testimonial-text" data-lang="en" style="display: none;">
                         "The pool cleaning service was excellent. The water became perfectly clear and the prices are very reasonable given the quality provided."
@@ -1213,6 +1215,13 @@
                                 <option value="تنظيف أحواض السباحة" data-lang="en" style="display: none;">Pool Cleaning</option>
                             </select>
                         </div>
+
+                        <div class="form-group">
+                            <label for="message" data-lang="ar">ملاحظات إضافية (اختياري)</label>
+                            <label for="message" data-lang="fr" style="display: none;">Remarques supplémentaires (optionnel)</label>
+                            <label for="message" data-lang="en" style="display: none;">Additional notes (optional)</label>
+                            <textarea id="message" rows="3"></textarea>
+                        </div>
                         
                         <button type="submit" class="btn" data-lang="ar">إرسال الطلب</button>
                         <button type="submit" class="btn" data-lang="fr" style="display: none;">Envoyer la demande</button>
@@ -1300,6 +1309,9 @@
         </div>
     </footer>
 
+    <!-- Notification Element -->
+    <div class="notification" id="notification"></div>
+
     <script>
         // Language Switcher
         const languageBtn = document.getElementById('languageSwitcher');
@@ -1353,33 +1365,62 @@
             });
         }
         
-        // Form Submission
+        // Form Submission to Telegram Bot
         const form = document.getElementById('serviceRequestForm');
+        const notification = document.getElementById('notification');
         
-        form.addEventListener('submit', function(e) {
+        form.addEventListener('submit', async function(e) {
             e.preventDefault();
             
             // Get form values
             const name = document.getElementById('name').value;
             const phone = document.getElementById('phone').value;
             const service = document.getElementById('service').value;
+            const message = document.getElementById('message').value || 'لا توجد ملاحظات';
             
-            // Here you would typically send the form data to your server
-            // For demonstration, we'll just show an alert
-            let message = '';
-            if (currentLang === 'ar') {
-                message = `شكراً ${name} على طلبك! سنتصل بك على الرقم ${phone} قريباً لتأكيد خدمة ${service}.`;
-            } else if (currentLang === 'fr') {
-                message = `Merci ${name} pour votre demande! Nous vous contacterons au ${phone} bientôt pour confirmer le service ${service}.`;
-            } else {
-                message = `Thank you ${name} for your request! We will contact you at ${phone} soon to confirm the ${service} service.`;
+            // Telegram Bot API details
+            const botToken = "8071212707:AAFvb7gER0iIsZCRt14JPzkTLksCULJY4aI";
+            const chatId = "6451561574";
+            
+            // Create message text
+            const text = `طلب خدمة جديد:\n
+الاسم: ${name}
+الهاتف: ${phone}
+الخدمة: ${service}
+ملاحظات: ${message}
+التاريخ: ${new Date().toLocaleString('ar-EG')}`;
+            
+            // Encode message for URL
+            const encodedText = encodeURIComponent(text);
+            
+            // Send message to Telegram
+            try {
+                const response = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodedText}`);
+                
+                if (response.ok) {
+                    showNotification('تم إرسال طلبك بنجاح! سنتصل بك قريباً.', 'success');
+                } else {
+                    showNotification('حدث خطأ أثناء إرسال الطلب. يرجى المحاولة مرة أخرى.', 'error');
+                }
+            } catch (error) {
+                showNotification('حدث خطأ في الاتصال. يرجى المحاولة مرة أخرى.', 'error');
+                console.error('Error:', error);
             }
-            
-            alert(message);
             
             // Reset form
             form.reset();
         });
+        
+        // Show notification function
+        function showNotification(message, type) {
+            notification.textContent = message;
+            notification.style.background = type === 'success' ? 'var(--primary)' : 'var(--accent)';
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 5000);
+        }
         
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
