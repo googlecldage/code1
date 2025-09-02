@@ -1090,15 +1090,24 @@
                 <a href="#contact" class="btn" data-lang="en" style="display: none;">Request</a>
             </div>
         </div>
-    </header>
+  </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container hero-content">
-            <h1 data-lang="ar">  </h1>
-            <h1 data-lang="fr" style="display: none;"> </h1>
-            <h1 data-lang="en" style="display: none;"> </h1>
-            
+<!-- Hero Section -->
+<section class="hero" id="home">
+  <div class="container hero-content">
+    <h1 data-lang="ar"> </h1>
+    <h1 data-lang="fr" style="display: none;"> </h1>
+    <h1 data-lang="en" style="display: none;"> </h1>
+  </div>
+</section>
+
+<style>
+  .hero h1::after {
+    content: "نص مؤقت";   /* نص وهمي */
+    visibility: hidden;   /* يخفي النص لكن يحافظ على الفراغ */
+    display: inline-block;
+  }
+</style>
             <p data-lang="ar">نقدم خدمات تنظيف وتنسيق حدائق محترفة في مراكش والنواحي بأسعار تنافسية وجودة لا مثيل لها</p>
             <p data-lang="fr" style="display: none;">Nous proposons des services professionnels de nettoyage et d'aménagement paysager à Marrakech et ses environs à des prix compétitifs et une qualité incomparable.</p>
             <p data-lang="en" style="display: none;">We provide professional cleaning and landscaping services in Marrakech and surrounding areas at competitive prices and unparalleled quality.</p>
