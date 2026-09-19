@@ -159,6 +159,14 @@
   body.lang-ar .ar{display:block;}
   body.lang-ar span.ar{display:inline;}
 
+  /* STRICT language isolation: the inactive language is always hidden,
+     even if another rule (e.g. .section-eyebrow, .cm-label, labels) sets its own display */
+  body.lang-fr .ar{display:none !important;}
+  body.lang-ar .fr{display:none !important;}
+
+  /* phone numbers always read left-to-right, even inside Arabic (RTL) text */
+  .ltr-num{direction:ltr; unicode-bidi:isolate; display:inline-block;}
+
   body.lang-ar{direction:rtl;}
   body.lang-fr{direction:ltr;}
 
@@ -481,7 +489,7 @@
         <path d="M14 30c4 6 14 6 20 2" stroke="#2C7A8C" stroke-width="2.2" stroke-linecap="round" fill="none"/>
       </svg>
       <div>
-        <div class="brand-name">Oasis Verte</div>
+        <div class="brand-name"><span class="fr">Oasis Verte</span><span class="ar">الواحة الخضراء</span></div>
         <div class="brand-tag"><span class="fr">Jardin &amp; Piscine</span><span class="ar">حدائق ومسابح</span></div>
       </div>
     </a>
@@ -631,7 +639,8 @@
         <circle cx="200" cy="170" r="60" fill="#2E4A3A" opacity="0.14"/>
         <circle cx="200" cy="170" r="9" fill="#C1613B"/>
         <circle cx="200" cy="170" r="16" fill="none" stroke="#C1613B" stroke-width="1.5" opacity="0.6"/>
-        <text x="200" y="205" text-anchor="middle" font-family="Fraunces, serif" font-size="15" fill="#2E4A3A" font-weight="600">Marrakech</text>
+        <text class="fr" x="200" y="205" text-anchor="middle" font-family="Fraunces, serif" font-size="15" fill="#2E4A3A" font-weight="600">Marrakech</text>
+        <text class="ar" x="200" y="205" text-anchor="middle" font-family="El Messiri, sans-serif" font-size="16" fill="#2E4A3A" font-weight="600">مراكش</text>
         <g fill="#4C7A5D">
           <circle cx="120" cy="90" r="4.5"/><circle cx="300" cy="110" r="4.5"/>
           <circle cx="90" cy="230" r="4.5"/><circle cx="310" cy="240" r="4.5"/>
@@ -648,8 +657,7 @@
         <p class="ar">نتدخل في جميع أنحاء المدينة والمناطق المجاورة، لفائدة السكنيات والرياضات والفيلات والفنادق.</p>
       </div>
       <div class="zone-list">
-        <div class="zone-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a7 7 0 00-7 7c0 5.5 7 13 7 13s7-7.5 7-13a7 7 0 00-7-7z"/><circle cx="12" cy="9" r="2.4"/></svg><span class="fr">Guéliz &amp; Hivernage</span><span class="ar">جليز والحي الشتوي</span></div>
-        <div class="zone-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a7 7 0 00-7 7c0 5.5 7 13 7 13s7-7.5 7-13a7 7 0 00-7-7z"/><circle cx="12" cy="9" r="2.4"/></svg><span class="fr">Palmeraie</span><span class="ar">النخيل</span></div>
+        <div class="zone-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a7 7 0 00-7 7c0 5.5 7 13 7 13s7-7.5 7-13a7 7 0 00-7-7z"/><circle cx="12" cy="9" r="2.4"/></svg><span class="fr">Zone Palmeraie</span><span class="ar">منطقة النخيل</span></div>
         <div class="zone-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a7 7 0 00-7 7c0 5.5 7 13 7 13s7-7.5 7-13a7 7 0 00-7-7z"/><circle cx="12" cy="9" r="2.4"/></svg><span class="fr">Route de l'Ourika</span><span class="ar">طريق أوريكة</span></div>
         <div class="zone-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a7 7 0 00-7 7c0 5.5 7 13 7 13s7-7.5 7-13a7 7 0 00-7-7z"/><circle cx="12" cy="9" r="2.4"/></svg><span class="fr">Route de Fès / Aghmat</span><span class="ar">طريق فاس / أغمات</span></div>
         <div class="zone-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a7 7 0 00-7 7c0 5.5 7 13 7 13s7-7.5 7-13a7 7 0 00-7-7z"/><circle cx="12" cy="9" r="2.4"/></svg><span class="fr">Amizmiz &amp; Tahannaout</span><span class="ar">أمزميز وتحناوت</span></div>
@@ -747,7 +755,7 @@
           <span class="ar">كم من الوقت يستغرق الرد على طلبي؟</span>
         </summary>
         <p class="fr">Nous répondons généralement en moins de 24h, directement sur WhatsApp au +212 663 531 691 ou par e-mail à consulting3600@gmail.com.</p>
-        <p class="ar">نرد عادةً في أقل من 24 ساعة، مباشرة على واتساب على الرقم +212 663 531 691 أو عبر البريد الإلكتروني consulting3600@gmail.com.</p>
+        <p class="ar">نرد عادةً في أقل من 24 ساعة، مباشرة على واتساب على الرقم <span class="ltr-num">+212 663 531 691</span> أو عبر البريد الإلكتروني consulting3600@gmail.com.</p>
       </details>
     </div>
   </div>
@@ -770,7 +778,7 @@
         <div class="contact-methods">
           <a class="contact-method" href="https://wa.me/212663531691" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.44 1.33 4.94L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.02c-.24.68-1.4 1.3-1.94 1.38-.5.08-1.11.11-1.79-.11-.41-.13-.94-.3-1.62-.6-2.85-1.23-4.71-4.1-4.85-4.29-.14-.19-1.16-1.54-1.16-2.94s.72-2.09.98-2.37c.24-.27.53-.34.71-.34.18 0 .35 0 .51.01.16.01.38-.06.6.46.24.57.8 1.98.87 2.13.07.14.12.31.02.5-.1.19-.15.31-.29.47-.14.16-.3.36-.43.49-.14.14-.29.29-.13.57.17.29.75 1.24 1.61 2.01 1.11.99 2.04 1.3 2.33 1.44.29.14.46.12.63-.07.17-.19.72-.84.92-1.13.19-.29.38-.24.63-.14.26.1 1.65.78 1.93.92.29.14.48.21.55.33.07.12.07.68-.17 1.35z"/></svg>
-            <div><span class="cm-label fr">WhatsApp</span><span class="cm-label ar">واتساب</span><span class="cm-value">+212 663 531 691</span></div>
+            <div><span class="cm-label fr">WhatsApp</span><span class="cm-label ar">واتساب</span><span class="cm-value"><span class="ltr-num">+212 663 531 691</span></span></div>
           </a>
           <a class="contact-method" href="mailto:consulting3600@gmail.com">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18v12H3z"/><path d="M3 6l9 7 9-7"/></svg>
@@ -804,17 +812,14 @@
         <div class="form-row">
           <label class="fr">Service souhaité</label><label class="ar">الخدمة المطلوبة</label>
           <select id="qService">
-            <option class="fr" value="Entretien de jardin">Entretien de jardin</option>
-            <option class="ar" value="صيانة الحدائق">صيانة الحدائق</option>
-            <option class="fr" value="Entretien de piscine">Entretien de piscine</option>
-            <option class="ar" value="صيانة المسبح">صيانة المسبح</option>
-            <option class="fr" value="Jardin + Piscine">Jardin + Piscine</option>
-            <option class="ar" value="حديقة + مسبح">حديقة + مسبح</option>
+            <option data-fr="Entretien de jardin" data-ar="صيانة الحدائق" value="Entretien de jardin">Entretien de jardin</option>
+            <option data-fr="Entretien de piscine" data-ar="صيانة المسبح" value="Entretien de piscine">Entretien de piscine</option>
+            <option data-fr="Jardin + Piscine" data-ar="حديقة + مسبح" value="Jardin + Piscine">Jardin + Piscine</option>
           </select>
         </div>
 
         <div class="form-row">
-          <label class="fr">Message (adresse, fréquence souhaitée...)</label><label class="ar">الرسالة (العنوان، التكرار المطلوب...)</label>
+          <label class="fr">Message</label><label class="ar">الرسالة</label>
           <textarea id="qMessage" placeholder="—"></textarea>
         </div>
 
@@ -833,7 +838,7 @@
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <div class="brand-name">Oasis Verte</div>
+        <div class="brand-name"><span class="fr">Oasis Verte</span><span class="ar">الواحة الخضراء</span></div>
         <p class="fr">Entretien professionnel de jardins et piscines à Marrakech. Un service soigné pour des extérieurs toujours prêts à recevoir.</p>
         <p class="ar">صيانة احترافية للحدائق والمسابح بمراكش. خدمة متقنة لفضاءات خارجية جاهزة دائماً لاستقبال ضيوفكم.</p>
       </div>
@@ -849,7 +854,7 @@
       <div>
         <h4 class="fr">Contact</h4><h4 class="ar">التواصل</h4>
         <ul>
-          <li><a href="https://wa.me/212663531691" target="_blank" rel="noopener">+212 663 531 691</a></li>
+          <li><a href="https://wa.me/212663531691" target="_blank" rel="noopener"><span class="ltr-num">+212 663 531 691</span></a></li>
           <li><a href="mailto:consulting3600@gmail.com">consulting3600@gmail.com</a></li>
           <li><address style="display:inline;font-style:normal;" itemprop="address"><span class="fr">Marrakech, Maroc</span><span class="ar">مراكش، المغرب</span></address></li>
         </ul>
@@ -887,6 +892,13 @@
       document.getElementById('btnFr').classList.add('active');
       document.getElementById('btnAr').classList.remove('active');
     }
+
+    // Service select: show options only in the active language (keeps the selected choice)
+    document.querySelectorAll('#qService option').forEach(function(opt){
+      const t = opt.getAttribute('data-' + (lang === 'ar' ? 'ar' : 'fr'));
+      opt.textContent = t;
+      opt.value = t;
+    });
   }
 
   function toggleMenu(){
@@ -906,7 +918,7 @@
 
     let text;
     if(isAr){
-      text = `مرحباً، أنا ${name}.\nالهاتف: ${phone}\nالخدمة المطلوبة: ${service}\nرسالة: ${message || 'لا يوجد'}`;
+      text = `مرحباً، أنا ${name}.\nالهاتف: \u2066${phone}\u2069\nالخدمة المطلوبة: ${service}\nرسالة: ${message || 'لا يوجد'}`;
     } else {
       text = `Bonjour, je suis ${name}.\nTéléphone : ${phone}\nService souhaité : ${service}\nMessage : ${message || 'aucun'}`;
     }
