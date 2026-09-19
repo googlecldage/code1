@@ -474,6 +474,42 @@
     .hero-trust{gap:20px;}
   }
 
+  /* ---------- fixes: contact block + mobile header ---------- */
+  /* label on its own line above the value, shown only in the active language */
+  body.lang-fr .contact-method .cm-label.fr,
+  body.lang-ar .contact-method .cm-label.ar,
+  body.lang-fr .contact-method .cm-value.fr,
+  body.lang-ar .contact-method .cm-value.ar{display:block;}
+  .contact-method .cm-value{display:block; overflow-wrap:anywhere;}
+  .contact-method > div{min-width:0;}
+  .contact-wrap > *{min-width:0;}
+
+  @media (max-width: 960px){
+    /* minmax(0,1fr) stops long content (email, form) from stretching the column beyond the screen */
+    .contact-wrap{grid-template-columns:minmax(0,1fr);}
+  }
+  @media (max-width: 720px){
+    .nav-wrap{padding:12px 16px; gap:8px;}
+    .brand{gap:8px; min-width:0;}
+    .brand-mark{width:34px; height:34px;}
+    .brand-name{font-size:1.05rem; white-space:nowrap;}
+    .brand-tag{font-size:0.56rem; letter-spacing:0.8px; white-space:nowrap;}
+    .header-actions{gap:8px;}
+    .lang-switch button{padding:6px 10px;}
+    .header-actions .btn-primary{padding:10px 14px;}
+    nav.main-nav{top:100%;}
+    .contact-method{padding:12px 14px; gap:10px;}
+    .contact-method .cm-value{font-size:0.92rem;}
+    .quote-form{padding:24px 18px;}
+  }
+  @media (max-width: 360px){
+    .brand-mark{width:30px; height:30px;}
+    .brand-name{font-size:0.95rem;}
+    .brand-tag{font-size:0.5rem; letter-spacing:0.5px;}
+    .lang-switch button{padding:6px 8px;}
+    .header-actions .btn-primary{padding:10px 12px;}
+  }
+
   :focus-visible{outline:2.5px solid var(--teal); outline-offset:3px;}
 </style>
 </head>
@@ -660,6 +696,7 @@
         <div class="zone-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a7 7 0 00-7 7c0 5.5 7 13 7 13s7-7.5 7-13a7 7 0 00-7-7z"/><circle cx="12" cy="9" r="2.4"/></svg><span class="fr">Zone Palmeraie</span><span class="ar">منطقة النخيل</span></div>
         <div class="zone-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a7 7 0 00-7 7c0 5.5 7 13 7 13s7-7.5 7-13a7 7 0 00-7-7z"/><circle cx="12" cy="9" r="2.4"/></svg><span class="fr">Route de l'Ourika</span><span class="ar">طريق أوريكة</span></div>
         <div class="zone-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a7 7 0 00-7 7c0 5.5 7 13 7 13s7-7.5 7-13a7 7 0 00-7-7z"/><circle cx="12" cy="9" r="2.4"/></svg><span class="fr">Route de Fès / Aghmat</span><span class="ar">طريق فاس / أغمات</span></div>
+        <div class="zone-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a7 7 0 00-7 7c0 5.5 7 13 7 13s7-7.5 7-13a7 7 0 00-7-7z"/><circle cx="12" cy="9" r="2.4"/></svg><span class="fr">Route de Ouarzazate</span><span class="ar">طريق ورزازات</span></div>
         <div class="zone-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a7 7 0 00-7 7c0 5.5 7 13 7 13s7-7.5 7-13a7 7 0 00-7-7z"/><circle cx="12" cy="9" r="2.4"/></svg><span class="fr">Amizmiz &amp; Tahannaout</span><span class="ar">أمزميز وتحناوت</span></div>
         <div class="zone-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a7 7 0 00-7 7c0 5.5 7 13 7 13s7-7.5 7-13a7 7 0 00-7-7z"/><circle cx="12" cy="9" r="2.4"/></svg><span class="fr">Villas &amp; riads périphériques</span><span class="ar">فيلات ورياضات الضواحي</span></div>
       </div>
